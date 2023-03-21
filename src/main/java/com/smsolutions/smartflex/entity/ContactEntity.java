@@ -8,7 +8,7 @@ public class ContactEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private Integer Id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -64,11 +64,11 @@ public class ContactEntity extends BaseEntity {
     @Column(name = "description")
     private String description;
 
-    public long getId() {
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         Id = id;
     }
 

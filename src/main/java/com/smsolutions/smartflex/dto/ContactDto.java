@@ -2,7 +2,7 @@ package com.smsolutions.smartflex.dto;
 
 public class ContactDto extends BaseDto {
 
-    private long Id;
+    private Integer Id;
 
     private String firstName;
 
@@ -44,11 +44,11 @@ public class ContactDto extends BaseDto {
 
     private String updatedAt;
 
-    public long getId() {
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         Id = id;
     }
 

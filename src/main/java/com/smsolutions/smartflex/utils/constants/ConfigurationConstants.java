@@ -11,4 +11,8 @@ public class ConfigurationConstants {
     public static final String AUTHORITIES = "Authorities";
     public static final String ROLES = "roles";
     public static final String IS_ENABLE = "isEnable";
+    public static final String APPLICATION_JSON = "application/json";
+    public static final String UTF_8 = "UTF-8";
+    public static final String CONTENT_TYPE = "application/json; charset=UTF-8";
+
 }

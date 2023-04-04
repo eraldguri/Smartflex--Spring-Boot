@@ -7,4 +7,5 @@ public class StatusString {
     public static final String OK = String.valueOf(HttpStatus.OK.value());
     public static final String SERVICE_UNAVAILABLE = String.valueOf(HttpStatus.SERVICE_UNAVAILABLE.value());
     public static final String UNAUTHORIZED = String.valueOf(HttpStatus.UNAUTHORIZED.value());
+    public static final String FORBIDDEN = String.valueOf(HttpStatus.FORBIDDEN.value());
 }

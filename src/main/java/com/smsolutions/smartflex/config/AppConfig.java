@@ -1,7 +1,13 @@
 package com.smsolutions.smartflex.config;
 
+import com.smsolutions.smartflex.config.filter.FlexAuthenticationProvider;
+import com.smsolutions.smartflex.config.filter.JwtUsernamePasswordAuthenticationFilter;
+import com.smsolutions.smartflex.exception.FlexAccessDeniedHandler;
 import com.smsolutions.smartflex.security.FlexUserDetailsService;
+import com.smsolutions.smartflex.security.jwt.config.JwtConfig;
+import com.smsolutions.smartflex.security.jwt.config.JwtService;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,10 +18,25 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class AppConfig {
+
+    @Autowired
+    private FlexAuthenticationProvider mFlexAuthenticationProvider;
+
+    @Autowired
+    private JwtConfig mJwtConfig;
+
+    @Autowired
+    private JwtService mJwtService;
+
+    @Bean
+    public JwtConfig jwtConfig() {
+        return new JwtConfig();
+    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -25,6 +46,11 @@ public class AppConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         return new FlexUserDetailsService();
+    }
+
+    @Autowired
+    public void configGlobal(final AuthenticationManagerBuilder authenticationManagerBuilder) {
+        authenticationManagerBuilder.authenticationProvider(mFlexAuthenticationProvider);
     }
 
     @Bean
@@ -53,8 +79,11 @@ public class AppConfig {
                 .exceptionHandling()
                 .authenticationEntryPoint(
                         (((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED)))
-                );
-//                .accessDeniedHandler()
+                )
+                .accessDeniedHandler(new FlexAccessDeniedHandler())
+                .and()
+                .addFilterBefore(
+                        new JwtUsernamePasswordAuthenticationFilter(manager, mJwtConfig, mJwtService), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

@@ -45,13 +45,13 @@ public class UserServiceImpl implements UserService {
             response.setMessage(ExceptionMessage.SERVICE_UNAVAILABLE);
         }
 
-        return null;
+        return response;
     }
 
     private User insertUser(UserDto userDto) {
         User user = new User();
-        user.setUsername(user.getUsername());
-        user.setPassword(mPasswordEncoder.encode(user.getPassword()));
+        user.setUsername(userDto.getUsername());
+        user.setPassword(mPasswordEncoder.encode(userDto.getPassword()));
 
         Set<Role> roles = new HashSet<>();
         roles.add(mRoleRepository.findByName(userDto.getRole()));

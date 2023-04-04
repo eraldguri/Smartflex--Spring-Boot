@@ -26,8 +26,8 @@ public class ContactMapper {
         contactDto.setOtherZipCode(contact.getOtherZipCode());
         contactDto.setOtherState(contact.getOtherState());
         contactDto.setDescription(contact.getDescription());
-        contactDto.setCreatedAt(contact.getCreatedAt());
-        contactDto.setUpdatedAt(contact.getUpdatedAt());
+//        contactDto.setCreatedAt(contact.getCreatedAt());
+//        contactDto.setUpdatedAt(contact.getUpdatedAt());
         return contactDto;
     }
 

@@ -1,5 +1,6 @@
 package com.smsolutions.smartflex.entity;
 
+import com.smsolutions.smartflex.base.BaseEntity;
 import jakarta.persistence.*;
 
 @Entity
@@ -215,5 +216,4 @@ public class ContactEntity extends BaseEntity {
     public void setDescription(String description) {
         this.description = description;
     }
-
 }

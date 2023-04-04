@@ -3,45 +3,25 @@ package com.smsolutions.smartflex.dto;
 public class ContactDto extends BaseDto {
 
     private Integer Id;
-
     private String firstName;
-
     private String lastName;
-
     private String birthDate;
-
     private String phone;
-
     private String otherPhone;
-
     private String mobile;
-
     private String secondaryEmail;
-
     private String street;
-
     private String city;
-
     private String country;
-
     private String zipCode;
-
     private String state;
-
     private String otherStreet;
-
     private String otherCity;
-
     private String otherCountry;
-
     private String otherZipCode;
-
     private String otherState;
-
     private String description;
-
     private String createdAt;
-
     private String updatedAt;
 
     public Integer getId() {

@@ -1,8 +1,9 @@
-package com.smsolutions.smartflex.service;
+package com.smsolutions.smartflex.service.impl;
 
 import com.smsolutions.smartflex.dto.ContactDto;
 import com.smsolutions.smartflex.entity.ContactEntity;
 import com.smsolutions.smartflex.repository.ContactRepository;
+import com.smsolutions.smartflex.service.ContactService;
 import com.smsolutions.smartflex.utils.ContactMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
